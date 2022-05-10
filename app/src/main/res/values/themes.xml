@@ -14,4 +14,13 @@
         <!-- Customize your theme here. -->
 
     </style>
+
+    <style name="Theme.FirstAnimations.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FirstAnimations.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.FirstAnimations.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

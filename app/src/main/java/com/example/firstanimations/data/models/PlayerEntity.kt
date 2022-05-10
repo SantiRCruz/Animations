@@ -1,9 +1,11 @@
 package com.example.firstanimations.data.models
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class PlayerEntity(
+    @PrimaryKey(autoGenerate = true)
     val id_player:Int = 0,
     val name_player:String = "",
     val born:String = "",
