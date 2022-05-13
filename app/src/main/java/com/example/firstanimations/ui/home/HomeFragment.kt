@@ -1,6 +1,7 @@
 package com.example.firstanimations.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,24 +30,33 @@ class HomeFragment : Fragment() {
         )
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentHomeBinding.bind(view)
+//        binding = FragmentHomeBinding.bind(view)
 
         setUpUsers()
-
 
     }
 
     private fun setUpUsers() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.fetchUserAll().collect {
                 when (it) {
                     is Result.Success -> {
+                        Log.e( "setUpUsers: ", it.data.toString())
                         if (it.data.isNullOrEmpty()) {
                             Snackbar.make(
                                 binding.root,
-                                "",
+                                "there is no information in the database",
                                 Snackbar.LENGTH_SHORT
                             ).show()
                         }else{

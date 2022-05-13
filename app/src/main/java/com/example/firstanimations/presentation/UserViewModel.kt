@@ -1,5 +1,6 @@
 package com.example.firstanimations.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -17,6 +18,7 @@ class UserViewModel(private val dao: UserDao) : ViewModel() {
         kotlin.runCatching {
             dao.getAllUser()
         }.onSuccess {
+            Log.e("fetchUserAll: ",it.toString() )
             emit(Result.Success(it))
         }.onFailure {
             emit(Result.Failure(Exception(it.message)))

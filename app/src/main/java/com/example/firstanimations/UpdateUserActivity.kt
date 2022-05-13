@@ -4,19 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.firstanimations.core.Constants
 import com.example.firstanimations.core.Result
 import com.example.firstanimations.data.local.AppDatabase
 import com.example.firstanimations.data.models.UserEntity
-import com.example.firstanimations.databinding.ActivityRegisterBinding
+import com.example.firstanimations.databinding.ActivityUpdateUserBinding
 import com.example.firstanimations.presentation.UserViewModel
 import com.example.firstanimations.presentation.UserViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
 
-class RegisterActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterBinding
+class UpdateUserActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityUpdateUserBinding
     private val viewModel by viewModels<UserViewModel> {
         UserViewModelFactory(
             AppDatabase.getUserDatabase(
@@ -24,31 +26,30 @@ class RegisterActivity : AppCompatActivity() {
             ).UserDao()
         )
     }
-    private val isChecked = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityUpdateUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setData()
         clicks()
-
 
     }
 
     private fun clicks() {
-        binding.btnSignUp.setOnClickListener { validate() }
+        binding.btnUpdate.setOnClickListener { validate() }
     }
 
     private fun validate() {
-        val results =
-            arrayOf(validateName(), validateLastName(), validateEmail(), validatePassword())
+        val results = arrayOf(validateName(), validateLastName(), validateEmail(), validatePassword())
         if (false in results) {
             return
         }
-        saveUser()
+        updateUser()
     }
 
-    private fun saveUser() {
+    private fun updateUser() {
         var profile = ""
         if (binding.checkBox.isChecked) {
             profile = "Admin"
@@ -56,34 +57,33 @@ class RegisterActivity : AppCompatActivity() {
             profile = "User"
         }
         lifecycleScope.launchWhenStarted {
-            viewModel.saveUser(
+            viewModel.updateUser(
                 UserEntity(
-                    0,
+                    Constants.USER_UPDATE!!.id_user,
                     binding.nameEdt.text.toString(),
                     binding.emailEdt.text.toString(),
                     binding.lastNameEdt.text.toString(),
                     binding.passwordEdt.text.toString(),
                     profile,
-                    false
+                    Constants.USER_UPDATE!!.blocked
                 )
             ).collect {
                 when (it) {
                     is Result.Success -> {
-                        Log.e("saveUser: ", it.data.toString())
-                        val i = Intent(this@RegisterActivity, AdminActivity::class.java)
+                        Log.e("updateUser: ", it.data.toString())
+                        val i = Intent(this@UpdateUserActivity, AdminActivity::class.java)
                         startActivity(i)
                         finish()
                     }
                     is Result.Failure -> {
-                        Snackbar.make(binding.root, "You can't register", Snackbar.LENGTH_SHORT)
+                        Snackbar.make(binding.root, "You can't update", Snackbar.LENGTH_SHORT)
                             .show()
-                        Log.e("saveUser: ", it.exception.message.toString())
+                        Log.e("updateUser: ", it.exception.message.toString())
                     }
                 }
             }
         }
     }
-
     private fun validateName(): Boolean {
         return if (binding.nameEdt.text.toString().isNullOrEmpty()) {
             binding.nameTIL.error = "This field can't be empty"
@@ -139,6 +139,15 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             binding.passwordTIL.error = null
             true
+        }
+    }
+    private fun setData() {
+        binding.emailEdt.setText(Constants.USER_UPDATE!!.email)
+        binding.lastNameEdt.setText(Constants.USER_UPDATE!!.last_name)
+        binding.nameEdt.setText(Constants.USER_UPDATE!!.name)
+        binding.passwordEdt.setText(Constants.USER_UPDATE!!.password)
+        if (Constants.USER_UPDATE!!.profile == "Admin") {
+            binding.checkBox.isChecked = true
         }
     }
 }

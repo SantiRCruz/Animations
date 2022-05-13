@@ -10,8 +10,10 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.firstanimations.core.Constants
 import com.example.firstanimations.core.Result
 import com.example.firstanimations.data.local.AppDatabase
+import com.example.firstanimations.data.models.UserEntity
 import com.example.firstanimations.databinding.ActivityAuthBinding
 import com.example.firstanimations.presentation.UserViewModel
 import com.example.firstanimations.presentation.UserViewModelFactory
@@ -65,7 +67,8 @@ class AuthActivity : AppCompatActivity() {
                                 if (binding.passwordEdt.text.toString() == it.data[0].password) {
                                     Snackbar.make(binding.root, "well done", Snackbar.LENGTH_SHORT)
                                         .show()
-                                    if (it.data[0].profile == "admin") {
+                                    Constants.CURRENT_USER = it.data[0] as UserEntity
+                                    if (it.data[0].profile == "Admin") {
                                         val i = Intent(this@AuthActivity, AdminActivity::class.java)
                                         startActivity(i)
                                         finish()

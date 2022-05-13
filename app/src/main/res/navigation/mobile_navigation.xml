@@ -9,17 +9,26 @@
         android:id="@+id/nav_home"
         android:name="com.example.firstanimations.ui.home.HomeFragment"
         android:label="List Players"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_self"
+            app:destination="@id/nav_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.firstanimations.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="Teams"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.firstanimations.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="About Us"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_matches"
+        android:name="com.example.firstanimations.ui.matches.MatchesFragment"
+        android:label="Matches"
+        tools:layout="@layout/fragment_matches" />
 </navigation>
