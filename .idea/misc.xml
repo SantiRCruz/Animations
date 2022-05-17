@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SRC ASUS/StudioProjects/Animations/app/src/main/res/layout/activity_admin.xml" value="0.22644927536231885" />
+        <entry key="..\:/Users/SRC ASUS/StudioProjects/Animations/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/SRC ASUS/StudioProjects/Animations/app/src/main/res/layout/fragment_matches.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/bg_btn_primary.xml" value="0.1575" />
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.165" />
