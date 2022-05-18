@@ -46,7 +46,8 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun goToSignUp() {
-        Snackbar.make(binding.root, "navigate.....", Snackbar.LENGTH_SHORT).show()
+        val i  = Intent(this@AuthActivity,RegisterActivity::class.java)
+        startActivity(i)
     }
 
     private fun signIn() {

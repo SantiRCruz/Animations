@@ -15,19 +15,19 @@ import kotlinx.coroutines.flow.stateIn
 
 class MatchViewModel(private val dao: MatchDao) : ViewModel() {
 
-//    fun fetchMatches(): StateFlow<Result<List<Map<MatchAndStadium,List<TeamEntity>>>>> = flow {
-//        kotlin.runCatching {
-//            dao.getMatches()
-//        }.onSuccess {
-//            emit(Result.Success(it))
-//        }.onFailure {
-//            emit(Result.Failure(Exception(it.message)))
-//        }
-//    }.stateIn(
-//        scope = viewModelScope,
-//        started = SharingStarted.WhileSubscribed(5000),
-//        initialValue = Result.Loading()
-//    )
+    fun fetchMatches(): StateFlow<Result<List<MatchAndStadium>>> = flow {
+        kotlin.runCatching {
+            dao.getMatches()
+        }.onSuccess {
+            emit(Result.Success(it))
+        }.onFailure {
+            emit(Result.Failure(Exception(it.message)))
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Result.Loading()
+    )
     fun saveMatch(matchEntity: MatchEntity): StateFlow<Result<Long>> = flow {
         kotlin.runCatching {
             dao.saveMatch(matchEntity)
