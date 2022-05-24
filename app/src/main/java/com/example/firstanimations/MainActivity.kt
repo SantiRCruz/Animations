@@ -7,10 +7,12 @@ import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.firstanimations.core.Result
 import com.example.firstanimations.data.local.AppDatabase
 import com.example.firstanimations.data.models.MatchEntity
+import com.example.firstanimations.data.models.PlayerEntity
 import com.example.firstanimations.data.models.StadiumEntity
 import com.example.firstanimations.data.models.TeamEntity
 import com.example.firstanimations.databinding.ActivityMainBinding
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             ).TeamDao()
         )
     }
+    private val viewModelPlayer by viewModels<PlayerViewModel> { PlayerViewModelFactory(AppDatabase.getPlayerDatabase(applicationContext).PlayerDao())  }
+
     private val viewModelStadium by viewModels<StadiumViewModel> {
         StadiumViewModelFactory(
             AppDatabase.getStadiumDatabase(applicationContext).StadiumDao()
@@ -48,15 +52,15 @@ class MainActivity : AppCompatActivity() {
         animations()
         clicks()
         val teams = listOf(
-            TeamEntity(0, "Colombia", "Colombia"),
-            TeamEntity(0, "Brazil", "Brazil"),
-            TeamEntity(0, "Argentina", "Argentina"),
-            TeamEntity(0, "Spain", "Spain"),
-            TeamEntity(0, "Peru", "Peru"),
-            TeamEntity(0, "Portugal", "Portugal"),
-            TeamEntity(0, "Uruguay", "Uruguay"),
-            TeamEntity(0, "Chile", "Chile"),
-            TeamEntity(0, "Paraguay", "Paraguay"),
+            TeamEntity(0, "Colombia", "Colombia","10"),
+            TeamEntity(0, "Brazil", "Brazil","8"),
+            TeamEntity(0, "Argentina", "Argentina","6"),
+            TeamEntity(0, "Spain", "Spain","5"),
+            TeamEntity(0, "Peru", "Peru","3"),
+            TeamEntity(0, "Portugal", "Portugal","3"),
+            TeamEntity(0, "Uruguay", "Uruguay","2"),
+            TeamEntity(0, "Chile", "Chile","2"),
+            TeamEntity(0, "Paraguay", "Paraguay","0"),
         )
 
         val stadiums = listOf(
@@ -69,10 +73,20 @@ class MainActivity : AppCompatActivity() {
         )
 
         val matches = listOf(
-            MatchEntity(1, 1, 2, 2, 0, 0, 0, "Final", 1),
-            MatchEntity(2, 1, 2, 1, 0, 1, 0, "semifinal", 2),
-            MatchEntity(3, 4, 2, 1, 3, 1, 0, "semifinal", 3),
-            MatchEntity(4, 4, 5, 2, 0, 1, 0, "quarterfinals", 4),
+            MatchEntity(1, 1, 2, 2, 0, 0, 0, "Final", 1,"23-05-2022","09:05:37"),
+            MatchEntity(2, 1, 3, 1, 0, 1, 0, "semifinal", 2,"21-05-2022","09:05:37"),
+            MatchEntity(3, 4, 2, 1, 3, 1, 0, "semifinal", 3,"22-05-2022","09:05:37"),
+            MatchEntity(4, 4, 5, 2, 0, 1, 0, "quarterfinals", 4,"18-05-2022","09:05:37"),
+            MatchEntity(5, 3, 6, 2, 0, 1, 0, "quarterfinals", 4,"16-05-2022","09:05:37"),
+        )
+        val players = listOf(
+            PlayerEntity(1,"David Santiago Rodriguez Cruz","19-02-02","mid",0,0,0,10,"handsome","10",1),
+            PlayerEntity(2,"julian hernandez","19-02-02","por",0,0,0,10,"handsome","1",1),
+            PlayerEntity(3,"mariano bejarano","19-02-02","del",0,0,0,10,"handsome","4",1),
+            PlayerEntity(4,"diano quijano","19-02-02","del",0,0,0,10,"handsome","9",1),
+            PlayerEntity(5,"daniel eusebio","19-02-02","def",0,0,0,10,"handsome","2",1),
+            PlayerEntity(6,"adulfo hernandez","19-02-02","def",0,0,0,10,"handsome","3",1),
+            PlayerEntity(7,"mario casas","19-02-02","mid",0,0,0,10,"handsome","8",1),
         )
         lifecycleScope.launchWhenCreated { viewModelTeam.saveMatch(teams[0]).collect() }
         lifecycleScope.launchWhenCreated { viewModelTeam.saveMatch(teams[1]).collect() }
@@ -93,16 +107,15 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launchWhenCreated { viewModelMatch.saveMatch(matches[1]).collect() }
         lifecycleScope.launchWhenCreated { viewModelMatch.saveMatch(matches[2]).collect() }
         lifecycleScope.launchWhenCreated { viewModelMatch.saveMatch(matches[3]).collect() }
-        lifecycleScope.launchWhenCreated { viewModelMatch.fetchMatches().collect{
-            when(it){
-                is Result.Success->{
-                    Log.e("onCreate: ",it.toString() )
-                }
-                is Result.Failure->{
-                    Log.e("onCreate: ",it.exception.toString() )
-                }
-            }
-        } }
+        lifecycleScope.launchWhenCreated { viewModelMatch.saveMatch(matches[4]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[0]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[1]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[2]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[3]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[4]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[5]).collect() }
+        lifecycleScope.launchWhenCreated { viewModelPlayer.savePlayer(players[6]).collect() }
+
     }
 
     private fun clicks() {

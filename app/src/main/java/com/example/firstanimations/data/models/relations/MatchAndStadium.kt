@@ -9,9 +9,20 @@ import com.example.firstanimations.data.models.TeamEntity
 data class MatchAndStadium(
     @Embedded
     val match: MatchEntity,
-    @Embedded
-    val stadium: StadiumEntity,
-    @Embedded
-    val teamHome: TeamEntity,
+    @Relation(
+        parentColumn = "stadiumId",
+        entityColumn = "idStadium"
+    )
+    val stadiumEntity: StadiumEntity,
+    @Relation(
+        parentColumn = "homeTeamId",
+        entityColumn = "idTeam"
+    )
+    val homeTeamEntity: TeamEntity,
+    @Relation(
+        parentColumn = "awayTeamId",
+        entityColumn = "idTeam"
+    )
+    val awayTeamEntity: TeamEntity
 
 )

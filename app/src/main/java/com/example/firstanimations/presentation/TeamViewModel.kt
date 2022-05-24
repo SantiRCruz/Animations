@@ -17,6 +17,34 @@ import kotlinx.coroutines.flow.stateIn
 
 class TeamViewModel(private val dao: TeamDao) : ViewModel() {
 
+    fun getMatchByPointsAsc(): StateFlow<Result<List<TeamEntity>>> = flow {
+        kotlin.runCatching {
+            dao.getTeamByPointsAsc()
+        }.onSuccess {
+            emit(Result.Success(it))
+        }.onFailure {
+            emit(Result.Failure(Exception(it.message)))
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Result.Loading()
+    )
+
+    fun getMatchByNameAsc(): StateFlow<Result<List<TeamEntity>>> = flow {
+        kotlin.runCatching {
+            dao.getTeamByNameAsc()
+        }.onSuccess {
+            emit(Result.Success(it))
+        }.onFailure {
+            emit(Result.Failure(Exception(it.message)))
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Result.Loading()
+    )
+
     fun saveMatch(teamEntity: TeamEntity): StateFlow<Result<Long>> = flow {
         kotlin.runCatching {
             dao.saveTeam(teamEntity)
@@ -30,6 +58,32 @@ class TeamViewModel(private val dao: TeamDao) : ViewModel() {
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = Result.Loading()
     )
+
+    fun getTeamsBySearch(search: String): StateFlow<Result<List<TeamEntity>>> = flow {
+        kotlin.runCatching {
+            dao.getTeamsBySearch(search)
+        }.onSuccess {
+            emit(Result.Success(it))
+        }.onFailure {
+            emit(Result.Failure(Exception(it.message)))
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Result.Loading())
+
+    fun getTeams(): StateFlow<Result<List<TeamEntity>>> = flow {
+        kotlin.runCatching {
+            dao.getTeams()
+        }.onSuccess {
+            emit(Result.Success(it))
+        }.onFailure {
+            emit(Result.Failure(Exception(it.message)))
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Result.Loading())
 
 }
 

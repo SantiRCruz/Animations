@@ -18,23 +18,32 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.FirstAnimations.PopupOverlay">
 
+
             <ImageView
                 android:id="@+id/imgAddUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_add_24"
                 android:layout_gravity="end"
                 android:layout_marginEnd="8dp"
-                />
+                android:src="@drawable/ic_baseline_add_24" />
+
+            <ImageView
+                android:id="@+id/imgFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/astronauta"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                android:visibility="gone"
+                 />
 
         </androidx.appcompat.widget.Toolbar>
-
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_admin" />
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

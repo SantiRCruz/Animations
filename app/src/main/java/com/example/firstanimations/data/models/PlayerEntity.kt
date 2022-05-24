@@ -16,5 +16,5 @@ data class PlayerEntity(
     val num_goals:Int = 0,
     val information:String = "",
     val num_jersey:String = "",
-    val team_id:String = "",
+    val team_id:Int = 0,
 )

@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.firstanimations"
-        minSdk 21
+        minSdk 28
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -64,6 +64,7 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.4.2'
     implementation 'androidx.room:room-runtime:2.4.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.android.car.ui:car-ui-lib:+'
     kapt 'androidx.room:room-compiler:2.4.2'
 
     testImplementation 'junit:junit:4.13.2'

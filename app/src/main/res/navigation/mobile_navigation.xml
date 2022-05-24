@@ -19,7 +19,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.firstanimations.ui.gallery.GalleryFragment"
         android:label="Teams"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_team_to_playersFragment"
+            app:destination="@id/playersFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -31,4 +35,24 @@
         android:name="com.example.firstanimations.ui.matches.MatchesFragment"
         android:label="Matches"
         tools:layout="@layout/fragment_matches" />
+    <fragment
+        android:id="@+id/nav_team"
+        android:name="com.example.firstanimations.ui.teams.TeamsFragment"
+        android:label="teams @"
+        tools:layout="@layout/fragment_teams" >
+        <action
+            android:id="@+id/action_nav_team_to_playersFragment"
+            app:destination="@id/playersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playersFragment"
+        android:name="com.example.firstanimations.ui.players.PlayersFragment"
+        android:label="fragment_players"
+        tools:layout="@layout/fragment_players" >
+        <argument android:name="id_team"
+            app:argType="integer" />
+        <argument
+            android:name="flag"
+            app:argType="string" />
+    </fragment>
 </navigation>

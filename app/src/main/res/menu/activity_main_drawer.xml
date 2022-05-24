@@ -16,6 +16,10 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_baseline_sports_soccer_24"
             android:title="Teams" />
+        <item
+            android:id="@+id/nav_team"
+            android:icon="@drawable/ic_baseline_sports_soccer_24"
+            android:title="Teams @" />
         <item android:title="" />
         <item android:title="" />
         <item android:title="" />

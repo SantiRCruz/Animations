@@ -39,12 +39,13 @@ class AdminActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_matches
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_matches,R.id.nav_team
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        Constants.APPBAR_BINDING = binding.appBarAdmin
         binding.appBarAdmin.imgAddUser.setOnClickListener {
             val i = Intent(this@AdminActivity, RegisterActivity::class.java)
             startActivity(i)

@@ -3,6 +3,7 @@ package com.example.firstanimations.data.models
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity
 data class MatchEntity(
@@ -15,5 +16,7 @@ data class MatchEntity(
     val homePenalties:Int = 0,
     val awayPenalties:Int = 0,
     val data:String = "",
-    val stadiumId:Int = 0
+    val stadiumId:Int = 0,
+    val date: String = "",
+    val hour: String = "",
     )

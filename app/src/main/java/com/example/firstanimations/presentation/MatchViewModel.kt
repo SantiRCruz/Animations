@@ -15,6 +15,19 @@ import kotlinx.coroutines.flow.stateIn
 
 class MatchViewModel(private val dao: MatchDao) : ViewModel() {
 
+    fun fetchMatchesByDate(date:String): StateFlow<Result<List<MatchAndStadium>>> = flow {
+        kotlin.runCatching {
+            dao.getMatchesByDate(date)
+        }.onSuccess {
+            emit(Result.Success(it))
+        }.onFailure {
+            emit(Result.Failure(Exception(it.message)))
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = Result.Loading()
+    )
     fun fetchMatches(): StateFlow<Result<List<MatchAndStadium>>> = flow {
         kotlin.runCatching {
             dao.getMatches()

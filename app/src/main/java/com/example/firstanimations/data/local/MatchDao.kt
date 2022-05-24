@@ -13,10 +13,10 @@ import com.example.firstanimations.data.models.relations.MatchAndStadium
 
 @Dao
 interface MatchDao {
-    @Query("SELECT * FROM matchentity m " +
-            "INNER JOIN teamentity t ON t.idTeam = m.homeTeamId " +
-            "INNER JOIN teamentity t2 ON t2.idTeam = m.awayTeamId  " +
-            "INNER JOIN stadiumentity s ON s.idStadium = m.stadiumId")
+    @Query("SELECT * FROM matchentity where date = :date ORDER BY date DESC")
+    suspend fun getMatchesByDate(date:String):List<MatchAndStadium>
+
+    @Query("SELECT * FROM matchentity ORDER BY date DESC")
     suspend fun getMatches():List<MatchAndStadium>
 
     @Insert(onConflict = REPLACE)
