@@ -8,24 +8,26 @@
         <entry key="..\:/Users/SRC ASUS/StudioProjects/Animations/app/src/main/res/layout/fragment_matches.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/bg_btn_primary.xml" value="0.1575" />
         <entry key="app/src/main/res/drawable/btn_round.xml" value="0.3555" />
+        <entry key="app/src/main/res/drawable/round_top_corners_green.xml" value="0.2955" />
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_update_user.xml" value="0.1480978260869565" />
         <entry key="app/src/main/res/layout/app_bar_admin.xml" value="0.33" />
         <entry key="app/src/main/res/layout/content_admin.xml" value="0.12537993920972645" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12537993920972645" />
-        <entry key="app/src/main/res/layout/fragment_matches.xml" value="0.1480978260869565" />
+        <entry key="app/src/main/res/layout/fragment_matches.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_players.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_teams.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_matches.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_players.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_teams.xml" value="0.40260416666666665" />
         <entry key="app/src/main/res/layout/nav_header_admin.xml" value="0.3672922252010724" />
-        <entry key="app/src/main/res/layout/user_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/user_item.xml" value="0.33" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.25384615384615383" />
         <entry key="app/src/main/res/menu/admin.xml" value="0.21944444444444444" />
       </map>

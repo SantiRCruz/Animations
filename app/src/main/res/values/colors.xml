@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#3A958B</color>
-    <color name="purple_500">#5482FC</color>
+    <color name="purple_500">#2EAD6D</color>
     <color name="purple_700">#132551</color>
     <color name="teal_200">#D81B60</color>
     <color name="teal_700">#FF018786</color>
@@ -16,5 +16,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="green_light">#F2FFF6</color>
     <color name="green">#67FF9C</color>
+    <color name="green2">#EAFFF0</color>
     <color name="gray_light">#5E717171</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FFC124</color>
 </resources>

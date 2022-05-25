@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.players.PlayersFragment">
+    tools:context=".ui.players.PlayersFragment"
+    android:background="@color/green2">
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvPlayers"
     android:layout_width="match_parent"

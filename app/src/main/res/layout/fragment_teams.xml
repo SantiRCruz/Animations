@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.teams.TeamsFragment">
+    tools:context=".ui.teams.TeamsFragment"
+    android:background="@color/green_light">
 
 
     <LinearLayout
@@ -15,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
+        android:textStyle="bold"
         android:textSize="20sp"
         android:padding="8dp"
         android:textColor="@color/black"
@@ -27,7 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name" />
+            android:text="Name"
+            android:textStyle="bold"
+            android:thumbTint="@color/green"
+            />
 
     </LinearLayout>
 
@@ -36,6 +40,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTeams"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/round_top_corners_green"
+        />
 
 </LinearLayout>

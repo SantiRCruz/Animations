@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.matches.MatchesFragment">
+    tools:context=".ui.matches.MatchesFragment"
+    android:background="@color/green_light">
 
     <TextView
         android:id="@+id/txtDate"
@@ -19,6 +20,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMatches"
         android:layout_width="match_parent"
+        android:background="@drawable/round_top_corners_green"
         android:layout_height="match_parent"/>
 
 
